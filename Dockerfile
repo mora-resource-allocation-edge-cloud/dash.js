@@ -14,5 +14,5 @@ LABEL author="aleskandro"
 LABEL name="MORA-TestBed-Player"
 LABEL description="Player with Metrics API handling for MORA"
 
-WORKDIR /usr/share/html
+WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/nginx .

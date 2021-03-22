@@ -396,7 +396,7 @@ app.controller('DashController', function ($scope, sources, contributors, dashif
         }, $scope.updateMetricsInterval);
     }, $scope);
 
-    function pushMetrics() {
+    $scope.pushMetrics = function() {
         console.log("pushing Metrics", $scope.metricsArray); // TODO PUSH METRICS
         if (!$scope.apiUrl) {
             return;
@@ -426,8 +426,9 @@ app.controller('DashController', function ($scope, sources, contributors, dashif
         });
         window.metricsPushed = true;
     }
+
     $scope.player.on(dashjs.MediaPlayer.events.PLAYBACK_ENDED, function (e) { /* jshint ignore:line */
-        pushMetrics();
+        $scope.pushMetrics();
         if ($('#loop-cb').is(':checked') &&
             $scope.player.getActiveStream().getStreamInfo().isLast) {
             $scope.doLoad();
